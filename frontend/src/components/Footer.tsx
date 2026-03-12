@@ -136,7 +136,6 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-text-secondary text-sm">
           <p>© 2026 DENCONE. {isJa ? '全著作権所有。' : 'All rights reserved.'}</p>
-          <p>{isJa ? 'AI開発者のために' : 'Made with 🫡 for AI developers worldwide'}</p>
         </div>
       </div>
     </footer>
