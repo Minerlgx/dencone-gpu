@@ -10,12 +10,16 @@ const api = axios.create({
 // Request interceptor to add auth token
 api.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('dencone-auth')
-    if (token) {
-      const parsed = JSON.parse(token)
-      if (parsed.state?.token) {
-        config.headers.Authorization = `Bearer ${parsed.state.token}`
+    try {
+      const authData = localStorage.getItem('dencone-auth')
+      if (authData) {
+        const parsed = JSON.parse(authData)
+        if (parsed.state?.token) {
+          config.headers.Authorization = `Bearer ${parsed.state.token}`
+        }
       }
+    } catch (e) {
+      // Ignore parse errors
     }
   }
   return config
