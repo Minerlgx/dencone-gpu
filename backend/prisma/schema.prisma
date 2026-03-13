@@ -42,6 +42,7 @@ model Product {
   slug        String    @unique
   category    String
   description String?   @db.Text
+  descriptionJa String? @db.Text
   specs       Json?
   pricing     Json
   priceHourly  Float
