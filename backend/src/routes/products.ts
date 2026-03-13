@@ -7,9 +7,9 @@ const prisma = new PrismaClient()
 // Get all products
 router.get('/', async (req: Request, res: Response) => {
   try {
-    const { category, featured, status = 'ACTIVE' } = req.query
+    const { category, featured } = req.query
 
-    const where: any = { status: status as string }
+    const where: any = {}
     if (category) where.category = category as string
     if (featured) where.featured = featured === 'true'
 
