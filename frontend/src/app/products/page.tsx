@@ -17,6 +17,7 @@ interface Product {
   slug: string
   category: string
   description: string
+  descriptionJa?: string
   specs: {
     gpu: string
     vram: string
@@ -225,6 +226,7 @@ function ProductsContent() {
 
 function ProductCard({ product, isJa }: { product: Product; isJa: boolean }) {
   const inStock = product.stock > 0
+  const description = isJa && product.descriptionJa ? product.descriptionJa : product.description
 
   return (
     <div className="card group hover:border-accent/50 transition-all duration-300">
@@ -246,7 +248,7 @@ function ProductCard({ product, isJa }: { product: Product; isJa: boolean }) {
       </span>
 
       <p className="text-text-secondary text-sm mb-4 line-clamp-2">
-        {product.description}
+        {description}
       </p>
 
       {/* Specs Grid */}
