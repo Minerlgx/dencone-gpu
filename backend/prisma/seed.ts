@@ -422,7 +422,7 @@ async function main() {
       priceMonthly: product.priceMonthly,
       stock: product.stock,
       featured: product.featured,
-      status: 'ACTIVE', // Ensure products are active
+      status: 'ACTIVE' as const, // Type as enum
     }
 
     if (!existing) {
