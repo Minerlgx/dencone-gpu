@@ -401,6 +401,10 @@ const products = [
 async function main() {
   console.log('Seeding database...')
 
+  // Delete all existing products first
+  await prisma.product.deleteMany()
+  console.log('Deleted all existing products')
+
   // Create products
   for (const product of products) {
     const existing = await prisma.product.findUnique({
@@ -411,13 +415,14 @@ async function main() {
       name: product.name,
       slug: product.slug,
       category: product.category,
-      description: product.descriptionEn, // Store English as main
-      descriptionJa: product.descriptionJa, // Store Japanese separately
+      description: product.descriptionEn,
+      descriptionJa: product.descriptionJa,
       specs: product.specs as any,
       priceHourly: product.priceHourly,
       priceMonthly: product.priceMonthly,
       stock: product.stock,
       featured: product.featured,
+      status: 'ACTIVE', // Ensure products are active
     }
 
     if (!existing) {
