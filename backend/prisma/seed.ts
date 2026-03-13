@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, ProductStatus } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 
 const prisma = new PrismaClient()
@@ -422,7 +422,7 @@ async function main() {
       priceMonthly: product.priceMonthly,
       stock: product.stock,
       featured: product.featured,
-      status: 'ACTIVE' as const, // Type as enum
+      status: ProductStatus.ACTIVE,
     }
 
     if (!existing) {
