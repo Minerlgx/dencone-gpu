@@ -418,11 +418,13 @@ async function main() {
       description: product.descriptionEn,
       descriptionJa: product.descriptionJa,
       specs: product.specs as any,
+      pricing: { hourly: product.priceHourly, monthly: product.priceMonthly },
       priceHourly: product.priceHourly,
       priceMonthly: product.priceMonthly,
       stock: product.stock,
       featured: product.featured,
       status: ProductStatus.ACTIVE,
+      images: [],
     }
 
     if (!existing) {
