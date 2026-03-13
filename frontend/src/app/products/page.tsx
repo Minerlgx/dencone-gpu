@@ -54,6 +54,11 @@ function ProductsContent() {
     if (gpuParam) {
       setSearchQuery(gpuParam)
     }
+    // Reset category to default for the new locale
+    setSelectedCategory(isJa ? 'すべて' : 'All')
+    // Clear products and show loading when locale changes
+    setProducts([])
+    setLoading(true)
     fetchProducts()
   }, [searchParams, locale])
 
