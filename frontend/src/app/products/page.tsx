@@ -55,7 +55,7 @@ function ProductsContent() {
       setSearchQuery(gpuParam)
     }
     fetchProducts()
-  }, [searchParams])
+  }, [searchParams, locale])
 
   const fetchProducts = async () => {
     try {
